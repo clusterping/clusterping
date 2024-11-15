@@ -1,4 +1,4 @@
-module github.com/clusterping/clusterping-cli
+module github.com/clusterping/clusterping
 
 go 1.23.2
 
