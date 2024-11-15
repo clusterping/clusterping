@@ -1,11 +1,14 @@
 /*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+ Copyright (c) 2023 <@mdxabu/clusterping@proton.me>
+
+This file is part of the clusterping-cli project.
+This source code is licensed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
+found in the LICENSE file in the root directory of this source tree.
 */
 package cmd
 
 import (
 	"fmt"
-	"os"
 	"runtime"
 
 	"github.com/spf13/cobra"
@@ -19,23 +22,15 @@ var versionCmd = &cobra.Command{
 	Long: `Version of the clusterping-cli`,
 	Run: func(cmd *cobra.Command, args []string) {
 		goVersion := runtime.Version()
-		version, err :=getVersion()
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+		version :=getVersion()
+		
 		fmt.Printf("ClusterPing CLI version: %s\n Go version: %s", version, goVersion)
 	},
 }
 
 
-func getVersion() (string, error) {
-	version, err := os.ReadFile("VERSION")
-	if err != nil {
-		return "", fmt.Errorf("failed to read version: %w", err)
-	}
-
-	return string(version), nil
+func getVersion() string{
+	return "v0.0.1"
 }
 
 
